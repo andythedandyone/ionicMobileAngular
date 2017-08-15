@@ -5,16 +5,24 @@ export class QuotesService {
 
   addFavoriteQuote(quote: Quote) {
     this.favoriteQuotes.push(quote)
-    console.log(this.favoriteQuotes);
-    const index = this.favoriteQuotes.findIndex((data: Quote) => {
-      console.log(data)
-      return data.id == quote.id
-    })
-    console.log(index)
+    console.log(this.favoriteQuotes)
   }
 
   removeFavoriteQuote(quote: Quote) {
-    // const quoteIndex = this.favoriteQuotes.indexOf(quote.id)
-    this.favoriteQuotes.slice()
+    const index = this.favoriteQuotes.findIndex((findQuote: Quote) => {
+      return findQuote.id == quote.id
+    })
+
+    this.favoriteQuotes.slice(index, 1)
+  }
+
+  // findFavoriteQuote(quote: Quote) {
+  //   const index = this.favoriteQuotes.findIndex((checkedQuote: Quote) => {
+  //     return checkedQuote.id == quote.id
+  //   })
+  // }
+
+  getFavoriteQuotes() {
+    return this.favoriteQuotes;
   }
 }

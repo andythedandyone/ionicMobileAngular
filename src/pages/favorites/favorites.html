@@ -14,5 +14,11 @@
 
 
 <ion-content padding>
+  <ion-list *ngFor="let favQuote of favoriteQuotes">
+    <ion-item>
+        <h4>{{favQuote.person}}</h4>
+        <p>{{favQuote.text}}</p>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
