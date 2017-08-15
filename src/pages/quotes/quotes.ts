@@ -16,7 +16,10 @@ import {QuotesService} from "../../services/quotes.service";
   templateUrl: 'quotes.html',
 })
 export class QuotesPage implements OnInit {
+
   quotes: {category: string, quotes: Quote[], icon: string};
+
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
@@ -30,22 +33,30 @@ export class QuotesPage implements OnInit {
 
     let alert = this.alertCtrl.create({
       title: 'Alert',
-      message: 'Do you with to add quote to favorites?',
+      message: 'Do you wish to add quote to favorites?',
       buttons: [
         {
-          text: 'Yes, add quote to favorites',
+          text: 'Yes, add to favorites',
           handler: () => {
             this.quoteService.addFavoriteQuote(quote)
           }
         },
         {
-          text: 'No, do not add to favorites',
+          text: 'No, cancel it.',
           handler: () => {
           }
         }
         ]
     })
     alert.present()
+  }
+
+  onUnFavoriteQuote(quote: Quote) {
+    this.quoteService.removeFavoriteQuote(quote)
+  }
+
+  isFavorite(quote: Quote) {
+    return this.quoteService.isFavoriteQuote(quote)
   }
 
 }

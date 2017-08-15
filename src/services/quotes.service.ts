@@ -12,15 +12,15 @@ export class QuotesService {
     const index = this.favoriteQuotes.findIndex((findQuote: Quote) => {
       return findQuote.id == quote.id
     })
-
-    this.favoriteQuotes.slice(index, 1)
+    this.favoriteQuotes.splice(index, 1)
+    console.log('this is the final after removing --> ', this.favoriteQuotes)
   }
 
-  // findFavoriteQuote(quote: Quote) {
-  //   const index = this.favoriteQuotes.findIndex((checkedQuote: Quote) => {
-  //     return checkedQuote.id == quote.id
-  //   })
-  // }
+  isFavoriteQuote(quote: Quote) {
+    return this.favoriteQuotes.find((checkedQuote: Quote) => {
+      return checkedQuote.id == quote.id
+    })
+  }
 
   getFavoriteQuotes() {
     return this.favoriteQuotes;

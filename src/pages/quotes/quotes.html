@@ -29,12 +29,23 @@
     <ion-row>
       <ion-col text-right>
 
-        <button ion-button
+        <button *ngIf="!isFavorite(quote)"
+                ion-button
                 icon-left
                 clear
                 small
                 (click)="onFavoriteQuote(quote)">
           <ion-icon name="star"></ion-icon>Favorite
+        </button>
+
+        <button *ngIf="isFavorite(quote)"
+                ion-button
+                icon-left
+                clear
+                small
+                color="danger"
+                (click)="onUnFavoriteQuote(quote)">
+          <ion-icon name="star"></ion-icon>UnFavorite
         </button>
 
       </ion-col>
