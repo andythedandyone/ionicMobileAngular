@@ -2,6 +2,7 @@ import {Quote} from "../data/quote.interface";
 
 export class QuotesService {
   private favoriteQuotes: Quote[] = [];
+  private switchStatus: boolean = false;
 
   addFavoriteQuote(quote: Quote) {
     this.favoriteQuotes.push(quote)
@@ -18,11 +19,20 @@ export class QuotesService {
 
   isFavoriteQuote(quote: Quote) {
     return this.favoriteQuotes.find((checkedQuote: Quote) => {
-      return checkedQuote.id == quote.id
+      return checkedQuote.id == quote.id;
     })
   }
 
   getFavoriteQuotes() {
     return this.favoriteQuotes;
+  }
+
+  setSwitchStatus(status: boolean) {
+    this.switchStatus = status;
+    console.log(this.switchStatus)
+  }
+
+  getSwtichStatus() {
+    return this.switchStatus;
   }
 }

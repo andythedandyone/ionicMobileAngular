@@ -7,8 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-buttons>
-      <ion-icon name="menu"></ion-icon>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
     </ion-buttons>
     <ion-title>Favorites</ion-title>
   </ion-navbar>
@@ -19,7 +21,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding  *ngFor="let favQuote of favoriteQuotes">
-      <ion-item (click)="openModal(favQuote)">
+      <ion-item (click)="openModal(favQuote)" [ngClass]="{bkg: isChecked()}">
         <h4>{{favQuote.person}}</h4>
         <p>{{favQuote.text}}</p>
       </ion-item>

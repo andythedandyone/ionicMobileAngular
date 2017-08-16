@@ -47,4 +47,8 @@ export class FavoritesPage implements OnInit {
     this.quoteService.removeFavoriteQuote(quote);
   }
 
+  isChecked() {
+    return this.quoteService.getSwtichStatus();
+  }
+
 }

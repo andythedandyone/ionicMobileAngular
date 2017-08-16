@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+import {QuotesService} from "../../services/quotes.service";
 
-/**
- * Generated class for the SettingsPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +9,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
+  constructor(private quotesService: QuotesService) {}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  toggleStatus(event) {
+    console.log(event)
+    this.quotesService.setSwitchStatus(event.checked)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+  isSwitchStatus() {
+    return this.quotesService.getSwtichStatus();
   }
-
 }
